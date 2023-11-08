@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 POST http://localhost:3000/api/post/new
+=======
+POST https://3000-emanuelgust-embracingex-zrdrjaw3luk.ws-eu106.gitpod.io/api/post/new
+>>>>>>> aac555c8670a29afdf3da86ecd2572507f7a4f35
 Content-Type: application/json
 
 {
