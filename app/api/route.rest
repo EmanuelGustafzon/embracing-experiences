@@ -1,4 +1,4 @@
-POST http://localhost:3000/api/post/new
+POST https://3000-emanuelgust-embracingex-zrdrjaw3luk.ws-eu106.gitpod.io/api/post/new
 Content-Type: application/json
 
 {
