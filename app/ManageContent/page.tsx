@@ -1,52 +1,41 @@
 'use client'
-import React, { useState } from 'react';
-import ReactQuill from 'react-quill';
-import axios from 'axios';
-import 'react-quill/dist/quill.snow.css';
+import React, { useRef } from 'react';
+import { Editor } from '@tinymce/tinymce-react';
 
 const ManageContent: React.FC = () => {
-    const [content, setContent] = useState('');
-
-    const handleContentChange = (content: string) => {
-      setContent(content);
-    };
-  
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-    
-        try {
-          await axios.post('/api/post/new', { content });
-        } catch (error) {
-          console.error('Error saving content:', error);
-        }
-      };
-  
+  const editorRef = useRef<any>(null);
+  const log = () => {
+    if (editorRef.current) {
+      console.log(editorRef.current.getContent());
+    }
+  };
     return (
-      <form onSubmit={handleSubmit}>
-        <div className="editor-container">
-          <ReactQuill 
-          value={content} 
-          onChange={handleContentChange} 
-          modules={{
-            toolbar: {
-                container: [
-                    [{ header: '1' }, { header: '2' }, { font: [] }],
-                    [{ list: 'ordered'}, { list: 'bullet' }],
-                    ['bold', 'italic', 'underline'],
-                    ['link', 'image', 'video'],
-                    ['clean']
-                ]
-            },
-            clipboard: {
-                // toggle to add extra line breaks when pasting HTML:
-                matchVisual: false,
-              },
-          }}
-          />
-        </div>
-        <button type="submit">Save Post</button>
-      </form>
+      <div>
+      <Editor
+        apiKey='5sjdjhqf7mt362cnaby3ixovygdanvvfrmz2ga421yb9ne9l'
+        onInit={(evt, editor) => editorRef.current = editor}
+        init={{
+          plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+          toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+          tinycomments_mode: 'embedded',
+          tinycomments_author: 'Author name',
+          mergetags_list: [
+            { value: 'First.Name', title: 'First Name' },
+            { value: 'Email', title: 'Email' },
+          ],
+          ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+      }}
+      initialValue="Welcome to TinyMCE!"
+    />
+    <button onClick={log}>log editor</button>
+      </div>
     );
 }
 
 export default ManageContent
+
+
+
+
+
+
