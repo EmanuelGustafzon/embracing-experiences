@@ -10,7 +10,7 @@ const connectMongo = async () => {
     if(connected) return
 
     try {
-        const connectToMongo = await mongoose.connect(DB_URI,  {
+        const connectToMongo = await mongoose.connect(DB_URI || 'mongodb://0.0.0.0:27017/embracingX',  {
             useNewUrlParser: true,
             useUnifiedTopology: true,
           } as any)
