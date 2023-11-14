@@ -1,14 +1,25 @@
 'use client'
 import React, { useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
+import axios from 'axios'
 
 const ManageContent: React.FC = () => {
   const editorRef = useRef<any>(null);
-  const log = () => {
+  const saveContent = () => {
     if (editorRef.current) {
-      console.log(editorRef.current.getContent());
+      const content = editorRef.current.getContent();
+      saveHtmlInDataBase(content)
+      console.log(content)
     }
   };
+  const saveHtmlInDataBase = async (content: string) => {
+    try {
+      const response = await axios.post('/api/post/new', {content})
+      console.log(response)
+    } catch (err) {
+      console.log(err)
+    }
+  }
     return (
       <div>
       <Editor
@@ -23,11 +34,10 @@ const ManageContent: React.FC = () => {
             { value: 'First.Name', title: 'First Name' },
             { value: 'Email', title: 'Email' },
           ],
-          ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
       }}
       initialValue="Welcome to TinyMCE!"
     />
-    <button onClick={log}>log editor</button>
+    <button onClick={saveContent}>Save content</button>
       </div>
     );
 }
