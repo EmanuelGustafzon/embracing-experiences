@@ -8,3 +8,8 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3000/api/post
+
+###
+
+GET http://localhost:3000/api/post/654e9726582cea9fc0947f9c
+
