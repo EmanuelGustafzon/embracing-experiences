@@ -37,7 +37,7 @@ const PostCard: React.FC = () => {
 
         return (
           <div key={post._id} className="card w-96 glass m-2">
-           {img && <figure><Image src={imgSrc} width={390} height={250} alt="car!" /></figure>} 
+           <figure><Image src={imgSrc || '/images/trolltunga.jpg'} width={390} height={250} alt="car!" /></figure>
             <div className="card-body">
               <h2 className="card-title">{h1Content}</h2>
               <p>{pContent}</p>
