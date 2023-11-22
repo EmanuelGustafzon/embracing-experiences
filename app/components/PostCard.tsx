@@ -28,7 +28,7 @@ const PostCard: React.FC = () => {
 
   return (
     <>
-      {posts.map((post) => {
+      {posts.length > 0 ? ( posts.map((post) => {
         const $ = cheerio.load(post.content);
         const h1Content = $('h1').text();
         const pContent = $('p').first().text();
@@ -37,7 +37,7 @@ const PostCard: React.FC = () => {
 
         return (
           <div key={post._id} className="card w-96 glass m-2">
-            <figure><Image src={img} width={390} height={250} alt="car!" /></figure>
+           {img && <figure><Image src={imgSrc} width={390} height={250} alt="car!" /></figure>} 
             <div className="card-body">
               <h2 className="card-title">{h1Content}</h2>
               <p>{pContent}</p>
@@ -47,7 +47,12 @@ const PostCard: React.FC = () => {
             </div>
           </div>
         );
-      })}
+      })
+      ) : (
+      <div className='grid grid-cols-2 gap-4 place-content-center h-48 '>
+      <span className="loading loading-ring loading-lg"></span>
+      </div>     
+      )}
     </>
   );
 };
