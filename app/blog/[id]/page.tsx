@@ -22,16 +22,33 @@ export default function Page({ params }: { params: { id: string } }) {
     fetchPosts();
   }, [params.id]);
 
-  const $ = cheerio.load(post);
-  const content = $.html()
- 
+// Parse the HTML content using Cheerio
+const $ = cheerio.load(post);
+
+// Replace img tags with Next.js Image components
+$('img').each(function (index) {
+  const imgSrc = $(this).attr('src');
+  const imgAlt = $(this).attr('alt') || '';
+  const imgWidth = parseInt($(this).attr('width') || '700', 10);
+  const imgHeight = parseInt($(this).attr('height') || '500', 10);
+
+  // Create a string representation of the Next.js Image component
+  const imageElement = `<Image key="${index}" src="/${imgSrc}" alt="${imgAlt}" width=${imgWidth} height=${imgHeight} />`;
+
+  // Replace the img tag with the string representation of the Next.js Image component
+  $(this).replaceWith(imageElement);
+});
+
+// Get the updated HTML content
+const updatedContent = $.html();
+
 
   return (
     <>
     <NavBar/>
     <div className="flex justify-center">
       <div className='prose'>
-        {post && <div dangerouslySetInnerHTML={{ __html: content }} />
+        {post && <div dangerouslySetInnerHTML={{ __html: updatedContent }} />
           || 
           <div className='grid grid-cols-2 gap-4 place-content-center h-48 '>
             <span className="loading loading-ring loading-lg"></span>
