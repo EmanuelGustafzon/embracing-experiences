@@ -5,10 +5,11 @@ import axios from 'axios'
 import dotenv from 'dotenv';
 dotenv.config();
 
-
 const ManageContent: React.FC = () => {
+
   const editorRef = useRef<any>(null);
-  const saveContent = () => {
+
+  const getContent = () => {
     if (editorRef.current) {
       const content = editorRef.current.getContent();
       saveHtmlInDataBase(content)
@@ -19,10 +20,11 @@ const ManageContent: React.FC = () => {
     try {
       const response = await axios.post('/api/post/new', {content})
       console.log(response)
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      console.error('Error saving content:', error);
     }
   }
+  
     return (
       <div>
       <Editor
@@ -40,7 +42,7 @@ const ManageContent: React.FC = () => {
       }}
       initialValue="Welcome to TinyMCE!"
     />
-    <button onClick={saveContent}>Save content</button>
+    <button onClick={getContent}>Save content</button>
       </div>
     );
 }
