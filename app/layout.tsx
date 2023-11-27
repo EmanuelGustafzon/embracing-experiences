@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { getServerSession } from 'next-auth'
 import SessionProvider from './auth/SessionProvider'
-import { authOptions } from './api/auth/[...nextauth]/route'
+import { authOptions } from './auth-options/AuthOptions'
 
 export const metadata: Metadata = {
   title: 'EmbracingX',
