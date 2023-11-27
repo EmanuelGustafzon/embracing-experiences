@@ -18,13 +18,15 @@ const NavBar = () => {
         <li><Link href="/about">About</Link></li>
       </ul>
     </div>
+    <p className=''> Welcome { session?.user?.name?.split(' ')[0] }! </p>
   </div>
+  
   <div className="navbar-center">
-    <Link href='/' className="btn btn-ghost normal-case text-xl text-pumpkin">Embracing Experiences</Link>
+    {/* <Link href='/' className="btn btn-ghost normal-case text-xl text-pumpkin">EmbracingX</Link> */}
   </div>
+  
   <div className="navbar-end">
   </div>
-  <div> { session?.user?.name } </div>
     <div>
       {!session ? (
         <Login/>
