@@ -2,9 +2,11 @@
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import Login from '../auth/Login';
+import CheckPermissions from '@/utils/Auth/CheckPermissions';
 
 const NavBar = () => {
   const { data: session } = useSession();
+  
   return (
     <div className="navbar">
   <div className="navbar-start">
@@ -16,11 +18,11 @@ const NavBar = () => {
         <li><Link href="/">Home</Link></li>
         <li><Link href="/blog">Blog</Link></li>
         <li><Link href="/about">About</Link></li>
+        <li><Link href="/ManageContent">Cms</Link></li>
       </ul>
     </div>
     <p className=''> Welcome { session?.user?.name?.split(' ')[0] }! </p>
   </div>
-  
   <div className="navbar-center">
     {/* <Link href='/' className="btn btn-ghost normal-case text-xl text-pumpkin">EmbracingX</Link> */}
   </div>
