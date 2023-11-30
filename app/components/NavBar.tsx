@@ -50,7 +50,7 @@ const NavBar = () => {
               <Image alt="Profile" src={session?.user?.image!} width={50} height={50} />
             </div>
           </div>
-          <ul className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+          <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
             <li>
               <Link href="/" className="justify-between">
                 Profile

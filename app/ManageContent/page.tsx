@@ -4,6 +4,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import axios from 'axios'
 import dotenv from 'dotenv';
 import CheckPermissions from '@/utils/Auth/CheckPermissions';
+import NavBar from '../components/NavBar';
 dotenv.config();
 
 const ManageContent: React.FC = () => {
@@ -26,7 +27,15 @@ const ManageContent: React.FC = () => {
   }
   
     return (
-      <div>
+      <>
+        <NavBar/>
+        <div className='mt-5 mb-5'>
+          <h2 className='mp-5 mp-5'>Write a blog post</h2>
+        </div>
+        <div className='mt-5 mb-5'>
+          <p className='mp-5 mp-5'>This is an editor to write blogposts just start exporing and press the button save to get it published.</p>
+        </div>
+      <div className='mt-5 mb-5 z-5'>
       <Editor
         apiKey='5sjdjhqf7mt362cnaby3ixovygdanvvfrmz2ga421yb9ne9l'
         onInit={(evt, editor) => editorRef.current = editor}
@@ -44,7 +53,7 @@ const ManageContent: React.FC = () => {
     />
     <button className='btn ' onClick={getContent}>Save content</button>
       </div>
-      
+    </>
     );
 }
 
