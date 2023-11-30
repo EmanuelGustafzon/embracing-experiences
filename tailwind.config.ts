@@ -20,12 +20,12 @@ const config: Config = {
     themes: [
       {
         mytheme: {
-        "primary": "#96C5F7",
+        "primary": "#78CAD2",
         "secondary": "#1C110A",
         "accent": "#dc8850",
         "pumpkin": "#FE7F2D",
         "neutral": "#FFEAEE",
-        "base-100": "#96C5F7",
+        "base-100": "#62A8AC",
         "info": "#2463eb",
         "success": "#16a249",
         "warning": "#db7706",
