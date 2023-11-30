@@ -43,19 +43,14 @@ const NavBar = () => {
       <div className="navbar-end">
         <div>
         {session ? (
-          <div className="dropdown dropdown-end">
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-          <div className="w-10 rounded-full">
-            <Image alt="Profile" src={session?.user?.image!} width={50} height={50} />
-          </div>
-        </div>
-        <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-          <li>
-            <Link href="/" className="justify-between">
-              Profile
-              <span className="badge">Coming soon</span>
-            </Link>
-          </li>
+          <div className="dropdown dropdown-end bg-primary">
+<label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+<div className="w-10 rounded-full">
+<Image alt="Profile" src={session?.user?.image!} width={50} height={50} />
+</div>
+</label>
+<ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+<li><Link href="/">Profile</Link></li>
           { isAdmin &&
           <li>
             <Link href="/ManageContent">
@@ -64,11 +59,9 @@ const NavBar = () => {
             </Link>
           </li>
           }
-          <li>
-            <button onClick={() => signOut()}>Logout</button>
-          </li>
-        </ul>
-        </div>
+          <li><button onClick={() => signOut()}>Logout</button></li>
+</ul>
+</div>
         ) : (
         <Login/>
         )
