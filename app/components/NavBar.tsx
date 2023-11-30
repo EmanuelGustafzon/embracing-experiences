@@ -41,36 +41,39 @@ const NavBar = () => {
       </div>
 
       <div className="navbar-end">
-        {!session ? (
-          <Login/>
-          ) : (
-            <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <Image alt="Profile" src={session?.user?.image!} width={50} height={50} />
-            </div>
+        <div>
+        {session ? (
+          <div className="dropdown dropdown-end">
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+          <div className="w-10 rounded-full">
+            <Image alt="Profile" src={session?.user?.image!} width={50} height={50} />
           </div>
-          <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-            <li>
-              <Link href="/" className="justify-between">
-                Profile
-                <span className="badge">Coming soon</span>
-              </Link>
-            </li>
-            { isAdmin &&
-            <li>
-              <Link href="/ManageContent">
-                CMS
-                <span className="badge">Admin</span>
-              </Link>
-            </li>
-            }
-            <li>
-              <button onClick={() => signOut()}>Logout</button>
-            </li>
-          </ul>
-          </div>
-        )}
+        </div>
+        <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+          <li>
+            <Link href="/" className="justify-between">
+              Profile
+              <span className="badge">Coming soon</span>
+            </Link>
+          </li>
+          { isAdmin &&
+          <li>
+            <Link href="/ManageContent">
+              CMS
+              <span className="badge">Admin</span>
+            </Link>
+          </li>
+          }
+          <li>
+            <button onClick={() => signOut()}>Logout</button>
+          </li>
+        </ul>
+        </div>
+        ) : (
+        <Login/>
+        )
+        } 
+        </div>
       </div>
     </div>
   )
