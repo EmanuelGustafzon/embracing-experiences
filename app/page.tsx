@@ -1,17 +1,22 @@
 import NavBar from "./components/NavBar";
-
+import Image from "next/image"
+import Link from "next/link";
 export default function Home() {
   return (
     <div>
       <NavBar/>
-      <div className="hero min-h-screen" style={{backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)'}}>
-        <div className="hero-overlay bg-opacity-80"></div>
-            <div className="hero-content text-center text-neutral-content">
-                <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                    <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button className="btn btn-primary">Get Started</button>
-            </div>
+      <div className="hero min-h-screen bg-base-200">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+          <Image src="/images/northface.jpg" alt="Image of trolltunga hike." width={600} height={900} className="max-w-sm rounded-lg shadow-2xl" />
+        <div>
+          <h1 className="text-5xl font-bold">LET US DISCOVER!</h1>
+          <p className="py-6">A blog and community platform, all about travel, outdoor, culture and all kind of embracing experiences.</p>
+          <button className="btn btn-primary">
+            <Link href="/blog">
+              Read the blog!
+           </Link>
+          </button>
+        </div>
         </div>
       </div>
     </div>
