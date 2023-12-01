@@ -13,3 +13,16 @@ GET http://localhost:3000/api/post
 
 GET http://localhost:3000/api/post/654e9726582cea9fc0947f9c
 
+### 
+
+POST http://localhost:3000/api/UserPost/new
+Content-Type: application/json
+
+{
+    "title": "Northen Lights",
+    "image": "/images/northenLight.jpg",
+    "content": "Look at the amazig aurora in Oslo",
+    "userEmail": "emanuel.gustafzon@gmail.com"
+}
+
+
