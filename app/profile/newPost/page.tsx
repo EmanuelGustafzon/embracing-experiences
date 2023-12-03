@@ -2,23 +2,23 @@
 import axios from "axios"
 import { useState, ChangeEvent, FormEvent } from "react"
 import { useSession } from 'next-auth/react';
+import NavBar from "@/app/components/NavBar";
 
-// Define types for events
 interface SubmitEvent extends FormEvent {
   currentTarget: EventTarget & HTMLFormElement;
 }
 
 const NewUserPost: React.FC = () => {
+  const { data: session } = useSession();
+
   const [post, setPost] = useState({
     title: '',
-    image: '',
+    image: null as File | null,
     content: '',
     userEmail: ''
   });
 
-  const { data: session } = useSession();
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = event.target;
     setPost(prevState => ({
       ...prevState,
@@ -26,42 +26,68 @@ const NewUserPost: React.FC = () => {
     }));
   };
 
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    const files = event.target.files;
+
+    if (files && files.length > 0) {
+      setPost((prevState) => ({
+        ...prevState,
+        image: files[0], // Update the image property with the selected file
+      }));
+    }
+  };
+
   const handleSubmit = async (event: SubmitEvent): Promise<void> => {
     event.preventDefault();
 
-    if (!session) {
+    if (!session?.user?.email) {
         console.error('User not authenticated. Please log in.');
         return;
       }
-    
     try {
-      await axios.post('/api/UserPost/new', {
-        ...post,
-        userEmail: session?.user?.email
-      });
+      const formData = new FormData();
 
-      // Optionally, you can reset the form or perform any other actions upon successful submission
+      if (post.image) {
+        formData.append('image', post.image);
+      }
+
+      formData.append('title', post.title);
+      formData.append('content', post.content);
+      formData.append('userEmail', session?.user?.email);
+
+      await axios.post('/api/UserPost/new', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      
       setPost({
         title: '',
-        image: '',
+        image: null,
         content: '',
         userEmail: ''
       });
-
     } catch (error) {
-      // Handle errors, e.g., display an error message to the user
       console.error('Error submitting post:', error);
     }
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input onChange={handleChange} type='text' name='title' placeholder='title' value={post.title} />
-        <input onChange={handleChange} type='text' name='content' placeholder='content' value={post.content} />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <>
+      <NavBar/>
+      <div className="flex flex-wrap justify-center">
+        <div className="card w-96 shadow-xl">
+          <form onSubmit={handleSubmit}>
+            <input onChange={handleFileChange} id="fileInput" type="file" name="image" className="file-input w-full max-w-xs" />
+            <input onChange={handleChange} type='text' name='title' placeholder='title' value={post.title} className="input input-bordered w-full max-w-xs bg-neutral"/>
+            <textarea onChange={handleChange} name='content' placeholder='content' value={post.content} className="textarea bg-neutral" ></textarea>
+            <div>
+              <button className="btn" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+        </div>
+    </>
   );
 };
 
