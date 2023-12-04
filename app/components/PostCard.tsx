@@ -6,7 +6,7 @@ import * as cheerio from 'cheerio';
 import Link from 'next/link';
 
 interface PostInterface {
-  _id: number;
+  _id: string;
   content: string;
 }
 

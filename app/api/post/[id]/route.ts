@@ -1,7 +1,7 @@
 import connectMongo from '@/utils/Datebase';
 import Post from '@/models/Post';
 
-export async function GET(request: Request, { params }: { params: { id: number } }) {
+export async function GET(request: Request, { params }: { params: { id: string } }) {
     const postId = params.id 
     try {
         await connectMongo();
