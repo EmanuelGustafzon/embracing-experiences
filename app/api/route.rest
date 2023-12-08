@@ -27,11 +27,11 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/UserPost/6569eb55df8e6a7ae3bc403e
+GET http://localhost:3000/api/UserPost/656ce1c6de2f46751bd98502
 
 ###
 
-Delete http://localhost:3000/api/UserPost/6569eb55df8e6a7ae3bc403e
+Delete http://localhost:3000/api/UserPost/656ce1c6de2f46751bd98502
 
 
 

@@ -13,7 +13,8 @@ const UserPostSchema = new Schema<userPostTypes>({
         required: true
     },
     image: {
-      type: String
+      type: String,
+      required: true,
     },
     content: {
         type: String,
