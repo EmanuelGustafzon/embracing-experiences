@@ -27,7 +27,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/UserPost/656ce1c6de2f46751bd98502
+GET http://localhost:3000/api/UserPost?userEmail=emanuel.gustafzon@gmail.com
 
 ###
 
