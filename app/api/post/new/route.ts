@@ -10,7 +10,7 @@ export const POST = async (request: Request) => {
       const newPost = new Post({ content });
       console.log(newPost);
       await newPost.save();
-      return new Response(JSON.stringify(newPost), { status: 201 });
+      return new Response('Created post successfully', { status: 201 });
     } catch (error) {
       console.error('Error saving post:', error);
       return new Response('Failed to create a new post', { status: 500 });
