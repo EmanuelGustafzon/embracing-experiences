@@ -26,7 +26,6 @@ const ManageContent: React.FC = () => {
       console.error('Error saving content:', error);
     }
   }
-  
     return (
       <>
         <NavBar/>
@@ -39,14 +38,14 @@ const ManageContent: React.FC = () => {
       <div className='mt-5 mb-5 z-5'>
       <Editor
         apiKey='5sjdjhqf7mt362cnaby3ixovygdanvvfrmz2ga421yb9ne9l'
-        onInit={(evt, editor) => editorRef.current = editor}
+        onInit={(_, editor) => editorRef.current = editor}
         init={{
           plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
           toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight  | checklist numlist bullist indent outdent | emoticons charmap | removeformat ',
         }}
-      initialValue="Welcome to TinyMCE!"
+      initialValue="Write a blog post!"
     />
-    <button className='btn ' onClick={getContent}>Save content</button>
+    <button className='btn' onClick={getContent}>Publish content</button>
       </div>
     </>
     );

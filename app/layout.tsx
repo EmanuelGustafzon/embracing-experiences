@@ -17,7 +17,7 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions);
   return (
     <html lang="en">
-      <body className='font-sans bg-primary text-natrual'>
+      <body className='font-sans bg-base-100 text-natrual'>
         <SessionProvider session={ session }>
           {children}
         </SessionProvider>

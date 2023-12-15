@@ -32,7 +32,7 @@ const NewUserPost: React.FC = () => {
     if (files && files.length > 0) {
       setPost((prevState) => ({
         ...prevState,
-        image: files[0], // Update the image property with the selected file
+        image: files[0],
       }));
     }
   };
@@ -55,12 +55,12 @@ const NewUserPost: React.FC = () => {
       formData.append('content', post.content);
       formData.append('userEmail', session?.user?.email);
 
-      await axios.post('/api/UserPost/new', formData, {
+      const response = await axios.post('/api/UserPost/new', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-      
+      alert(response.statusText)
       setPost({
         title: '',
         image: null,
@@ -68,6 +68,7 @@ const NewUserPost: React.FC = () => {
         userEmail: ''
       });
     } catch (error) {
+      alert('Could not submit the post ')
       console.error('Error submitting post:', error);
     }
   };
@@ -82,7 +83,7 @@ const NewUserPost: React.FC = () => {
             <input onChange={handleChange} type='text' name='title' placeholder='title' value={post.title} className="input input-bordered w-full max-w-xs bg-neutral"/>
             <textarea onChange={handleChange} name='content' placeholder='content' value={post.content} className="textarea bg-neutral" ></textarea>
             <div>
-              <button className="btn" type="submit">Submit</button>
+              <button className="btn" type="submit">Publish</button>
             </div>
           </form>
         </div>

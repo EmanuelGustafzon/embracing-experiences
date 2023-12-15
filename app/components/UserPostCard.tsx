@@ -13,7 +13,7 @@ interface PostInterface {
   userEmail: string
 }
 
-const UserPostCard: React.FC = (onlyShowUserPosts = false) => {
+const UserPostCard: React.FC = () => {
   const { data: session } = useSession();
   const [posts, setPosts] = useState<PostInterface[]>([]);
 
