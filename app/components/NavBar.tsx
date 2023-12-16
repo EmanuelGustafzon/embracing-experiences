@@ -51,10 +51,10 @@ const NavBar = () => {
             </div>
             </label>
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-primary rounded-box w-52">
-              <li><Link href="/">Profile</Link></li>
+              <li><Link href="/profile">Profile</Link></li>
               { isAdmin &&
                 <li>
-                  <Link href="/ManageContent">
+                  <Link href="/manage-content">
                     CMS
                     <span className="badge">Admin</span>
                   </Link>

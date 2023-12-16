@@ -5,6 +5,7 @@ import axios from 'axios'
 import dotenv from 'dotenv';
 import CheckPermissions from '@/utils/Auth/CheckPermissions';
 import NavBar from '../components/NavBar';
+import NavCms from '../components/NavCms';
 dotenv.config();
 
 const ManageContent: React.FC = () => {
@@ -29,6 +30,9 @@ const ManageContent: React.FC = () => {
     return (
       <>
         <NavBar/>
+        <div className='flex flex-wrap'>
+          <NavCms/>
+        </div>
         <div className='mt-5 mb-5'>
           <h2 className='mp-5 mp-5'>Write a blog post</h2>
         </div>

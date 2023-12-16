@@ -18,7 +18,6 @@ export default function Page({ params }: { params: { id: string } }) {
         console.error('Error fetching posts:', error);
       }
     };
-
     fetchPosts();
   }, [params.id]);
 

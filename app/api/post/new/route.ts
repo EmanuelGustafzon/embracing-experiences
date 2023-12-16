@@ -6,9 +6,7 @@ export const POST = async (request: Request) => {
     const { content } = await request.json();
     try {
       await connectMongo();
-
       const newPost = new Post({ content });
-      console.log(newPost);
       await newPost.save();
       return new Response('Created post successfully', { status: 201 });
     } catch (error) {

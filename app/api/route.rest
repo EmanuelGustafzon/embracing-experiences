@@ -31,7 +31,15 @@ GET http://localhost:3000/api/UserPost?userEmail=emanuel.gustafzon@gmail.com
 
 ###
 
-Delete http://localhost:3000/api/UserPost/656ce1c6de2f46751bd98502
+Delete http://localhost:3000/api/post/657b3929bb1f280739a76e90
 
+###
+
+PUT http://localhost:3000/api/post/657defc0d36ecc845cefe2b6
+Content-Type: application/json
+
+{
+    "content": "hello worls"
+}
 
 

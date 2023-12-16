@@ -7,8 +7,8 @@ const About: React.FC = () => {
   return (
     <div>
         <NavBar/>
-        <div className='flex justify-center'>
-        <h2>
+        <div className='flex justify-center '>
+        <h2 className='mb-5 mt-5 text-3xl font-bold'>
             About Us
         </h2>
         </div>
