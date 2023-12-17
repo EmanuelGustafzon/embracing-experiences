@@ -31,7 +31,7 @@ GET http://localhost:3000/api/UserPost?userEmail=emanuel.gustafzon@gmail.com
 
 ###
 
-Delete http://localhost:3000/api/post/657b3929bb1f280739a76e90
+Delete http://localhost:3000/api/post/657f128436ed4371a11b3dc5
 
 ###
 

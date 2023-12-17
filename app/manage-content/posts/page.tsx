@@ -1,5 +1,5 @@
 'use client'
-import React, { ReactNode, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from '@/app/components/NavBar'
 import NavCms from '@/app/components/NavCms';
 import axios from 'axios';
@@ -18,7 +18,7 @@ const EditPosts: React.FC = () => {
     useEffect(() => {
       const fetchPosts = async () => {
         try {
-          const response = await axios.get('/api/post');
+          const response = await axios.get('/api/post',);
           setPosts(response.data);
         } catch (error) {
           console.error('Error fetching posts:', error);
@@ -28,15 +28,20 @@ const EditPosts: React.FC = () => {
     }, []);
 
     const deletePost = async (id: string) => {
-      try {
-        console.log(`/api/post/${id}`)
-        const response = await axios.delete(`/api/post/${id}`);
-        alert(response.statusText);
-      } catch (error) {
-        alert('Could not delete post');
-        console.error('Error: ', error);
+      const confirmDelete = window.confirm('Are you sure you want to delete this post?');
+      
+      if (confirmDelete) {
+        try {
+          const response = await axios.delete(`/api/post/${id}/`);
+          console.log(response.data)
+          alert(response.statusText);
+        } catch (error) {
+          alert('Could not delete post');
+          console.error('Error deleting post:', error);
+        }
       }
-    }
+    };
+    
   return (
     <div>
         <NavBar/>

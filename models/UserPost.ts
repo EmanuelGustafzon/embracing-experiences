@@ -1,3 +1,4 @@
+import { models } from 'mongoose';
 import { Schema, model } from 'mongoose';
 
 interface userPostTypes {
@@ -26,6 +27,6 @@ const UserPostSchema = new Schema<userPostTypes>({
     }
 })
 
-const UserPost = model<userPostTypes>('UserPost', UserPostSchema)
+const UserPost = models.UserPost || model<userPostTypes>('UserPost', UserPostSchema)
 
 export default UserPost;
