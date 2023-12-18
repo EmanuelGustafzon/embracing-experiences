@@ -24,7 +24,7 @@ const PostCard: React.FC = () => {
     };
 
     fetchPosts();
-  }, []);
+  }, [posts]);
 
   return (
     <>

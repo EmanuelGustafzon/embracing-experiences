@@ -25,7 +25,7 @@ const EditPosts: React.FC = () => {
         }
       };
       fetchPosts();
-    }, []);
+    }, [posts]);
 
     const deletePost = async (id: string) => {
       const confirmDelete = window.confirm('Are you sure you want to delete this post?');
