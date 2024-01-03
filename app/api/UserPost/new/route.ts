@@ -19,7 +19,7 @@ export const POST = async (request: Request) => {
         const bytes = await image.arrayBuffer();
         const buffer = Buffer.from(bytes);
     
-        const path = join(process.cwd(),'images', image.name);
+        const path = join(process.cwd(), 'public','images', image.name);
         await writeFile(path, buffer);
 
         imagePath = `/images/${image.name}`;
