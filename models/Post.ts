@@ -6,9 +6,12 @@ interface postTypes {
 
 const postSchema = new Schema<postTypes>({
     content: {
-        type: String
+        type: String,
+        indexes: true
     }
 })
+
+postSchema.path('content').index({text: true});
 
 const Post = models.Post || model<postTypes>('Post', postSchema)
 

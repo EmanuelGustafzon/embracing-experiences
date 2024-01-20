@@ -42,4 +42,15 @@ Content-Type: application/json
     "content": "hello worls"
 }
 
+###
+
+POST  http://localhost:3000/api/post/search
+Content-Type: application/json
+
+{
+    "searchTerm": "post"
+}
+
+
+
 
