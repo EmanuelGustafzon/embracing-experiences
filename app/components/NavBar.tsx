@@ -5,6 +5,7 @@ import { signOut, useSession } from 'next-auth/react';
 import Login from '../auth/Login';
 import { GetAdmin } from '@/utils/Auth/GetAdmin';
 import { useEffect, useState } from 'react';
+import SearchPost from './SearchPost';
 
 const NavBar = () => {
   const { data: session } = useSession();
@@ -50,10 +51,6 @@ const NavBar = () => {
             </div>
             </label>
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-primary rounded-box w-52">
-              <li><Link href="/profile">
-                Profile
-                <span className="badge">Comming soon</span>
-                </Link></li>
               { isAdmin &&
                 <li>
                   <Link href="/manage-content">
