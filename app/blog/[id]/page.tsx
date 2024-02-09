@@ -25,7 +25,7 @@ export default function Page({ params }: { params: { id: string } }) {
     const fetchPosts = async () => {
       try {
         const response = await axios.get(`/api/post/${params.id}`);
-        setContent(response.data.question);
+        setContent(response.data.content);
         setQuestion(response.data.question);
         setOptions(response.data.options);
         setMap(response.data.map);
