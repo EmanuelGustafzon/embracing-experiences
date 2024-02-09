@@ -84,7 +84,7 @@ export default function Page({ params }: { params: { id: string } }) {
           {map && (
             <div>
               <h3 className="mt-5">Find location here</h3>
-              <iframe src={map} width="600" height="450" loading="lazy"></iframe>
+              <iframe src={map} width="350" height="350" loading="lazy"></iframe>
             </div>
           )}
         </div>
