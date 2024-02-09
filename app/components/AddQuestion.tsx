@@ -49,20 +49,20 @@ const AddQuestion: React.FC<Props> = ({submitFunction, currentQuestion = "", cur
     e.preventDefault();
     const updatedOptions = options.map((option, index) => ({
         ...option,
-        correct: index === index && options[index].correct ? true : false
+        correct: options[index].correct ? true : false
     }));
     submitFunction(question, updatedOptions);
 };
 
   return (
 <div className="max-w-md mx-auto">
-  <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+  <form className="shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <div className="mb-4">
-      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="question">
+      <label className="block text-sm font-bold mb-2" htmlFor="question">
         Question
       </label>
       <input
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
         id="question"
         type="text"
         placeholder="Question"
@@ -74,7 +74,7 @@ const AddQuestion: React.FC<Props> = ({submitFunction, currentQuestion = "", cur
     {[0, 1, 2, 3].map((index) => (
       <div key={index} className="mb-4">
         <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight"
           placeholder={`Option ${index + 1}`}
           value={options[index].option}
           type="text"

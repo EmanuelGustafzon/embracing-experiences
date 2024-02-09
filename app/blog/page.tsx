@@ -7,9 +7,6 @@ const BlogPage: React.FC = () => {
   return (
     <div>
         <NavBar/>
-        <div>
-
-        </div>
         <div className='flex justify-center '>
         <h2 className='mb-5 mt-5 text-3xl font-bold'>
             Read the blog!

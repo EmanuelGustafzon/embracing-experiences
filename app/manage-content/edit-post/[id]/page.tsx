@@ -31,7 +31,7 @@ const EditPost = ({ params }: { params: { id: string } }) => {
     const fetchPost = async () => {
       try {
         const response = await axios.get(`/api/post/${params.id}`);
-        console.log(response.data)
+        setContent(response.data.content)
         setQuestion(response.data.question);
         setOptions(response.data.options);
         setMap(response.data.map);

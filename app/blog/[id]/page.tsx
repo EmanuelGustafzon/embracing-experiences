@@ -64,33 +64,43 @@ export default function Page({ params }: { params: { id: string } }) {
     })
   }
   return (
-    <>
-    <NavBar/>
-    <div className="flex justify-center">
-      <div className='prose'>
-        {content ? (
-          <div>
-            <div dangerouslySetInnerHTML={{ __html: updatedContent }} />
-            <h3>Do you remember?</h3>
-            <h3>{question}</h3>
-            <div className='flex flex-wrap'>
-              <button onClick={() => checkAnswer(0)} className={`btn ${selected[0] ? options[0].correct ? 'bg-success' : 'bg-warning' : ''}`}> {options[0].option}</button>
-              <button onClick={() => checkAnswer(1)} className={`btn ${selected[1] ? options[1].correct ? 'bg-success' : 'bg-warning' : ''}`}> {options[1].option}</button>
-              <button onClick={() => checkAnswer(2)} className={`btn ${selected[2] ? options[2].correct ? 'bg-success' : 'bg-warning' : ''}`}> {options[2].option}</button>
-              <button onClick={() => checkAnswer(3)} className={`btn ${selected[3] ? options[3].correct ? 'bg-success' : 'bg-warning' : ''}`}> {options[3].option}</button>
-            </div>
-          {map && <h3>Find location here</h3>} 
-          {map && <iframe src={map}></iframe>} 
+<>
+  <NavBar />
+  <div className="mt-5 flex justify-center">
+    <div className='prose'>
+      {content ? (
+        <div>
+          <div dangerouslySetInnerHTML={{ __html: updatedContent }} />
+          <h3 className="mt-5">Quiz Question:</h3>
+          <div className="rounded-lg shadow-md p-4">
+            <p>{question}</p>
           </div>
-        ) : (
-          <div className='grid grid-cols-2 gap-4 place-content-center h-48 '>
-            <span className="loading loading-ring loading-lg"></span>
-          </div> )
-        }
-          
+          <div className="grid grid-cols-2 gap-4 mt-5">
+            <button onClick={() => checkAnswer(1)} className={`btn ${selected[1] ? options[1].correct ? 'bg-success' : 'bg-error' : ''} `}>{options[1].option}</button>
+            <button onClick={() => checkAnswer(2)} className={`btn ${selected[2] ? options[2].correct ? 'bg-success' : 'bg-error' : ''} `}>{options[2].option}</button>
+            <button onClick={() => checkAnswer(0)} className={`btn ${selected[0] ? options[0].correct ? 'bg-success' : 'bg-error' : ''} `}>{options[0].option}</button>
+            <button onClick={() => checkAnswer(3)} className={`btn ${selected[3] ? options[3].correct ? 'bg-success' : 'bg-error' : ''} `}>{options[3].option}</button>
+          </div>
+          {map && (
+            <div>
+              <h3 className="mt-5">Find location here</h3>
+              <iframe src={map} width="600" height="450" loading="lazy"></iframe>
+            </div>
+          )}
         </div>
+      ) : (
+        <div className='grid grid-cols-2 gap-4 place-content-center h-48'>
+          <span className="loading loading-ring loading-lg"></span>
+        </div>
+      )}
     </div>
-    </>
+  </div>
+</>
+
+
+
+
+
   )
 }
 

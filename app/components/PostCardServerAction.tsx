@@ -33,6 +33,7 @@ const PostCard: React.FC<IPostCard> = async ({ searchTerm }) => {
     return (
     <>
       {posts.length > 0 ? ( posts.map((post) => {
+        if(post.isPublished) {
         const $ = cheerio.load(post.content);
         const h1Content = $('h1').text();
         const pContent = $('p').first().text();
@@ -51,6 +52,7 @@ const PostCard: React.FC<IPostCard> = async ({ searchTerm }) => {
             </div>
           </div>
         );
+        }
       })
       ) : (
       <div className='grid grid-cols-2 gap-4 place-content-center h-48 '>
