@@ -1,7 +1,7 @@
 import mongoose, { Schema, model, models } from 'mongoose';
 
 interface postTypes {
-    status: boolean;
+    isPublished: boolean;
     title: string;
     content: string;
     map: string;
@@ -17,13 +17,16 @@ interface optionsTypes {
 const optionSchema = new Schema<optionsTypes>({
     option: {
         type: String,
-        correct: Boolean
+    },
+    correct: {
+        type: Boolean
     }
 })
 
 const postSchema = new Schema<postTypes>({
-    status: {
-        isPublished: false
+    isPublished: {
+        type: Boolean,
+        default: false
     },
     title: {
         type: String

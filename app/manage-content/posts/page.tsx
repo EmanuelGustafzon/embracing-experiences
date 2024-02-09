@@ -45,7 +45,9 @@ const EditPosts: React.FC = () => {
   return (
     <div>
         <NavBar/>
-        <NavCms/>
+        <div className='mt-5 mb-5 flex justify-center'>
+          <NavCms />
+        </div>
         <div className='flex justify-center '>
             <h2 className='mb-5 mt-5 text-3xl font-bold'>
                 Manage Blog Posts

@@ -20,11 +20,12 @@ export async function GET(request: Request, { params }: { params: { id: string }
 export const PUT = async (request: Request, { params }: { params: { id: string } }) => {
   if (request.method === 'PUT') {
     const postId = params.id;
-    const { content } = await request.json();
+    const { content, question, options, map, isPublished } = await request.json();
     try {
       await connectMongo();
       const updatedPost = await Post.findOneAndUpdate(
-        { content: content },
+        { _id: postId },
+        { content, question, options, map, isPublished  },
       );
       return new Response('Updated the post successfully', { status: 200 });
     } catch (error) {
