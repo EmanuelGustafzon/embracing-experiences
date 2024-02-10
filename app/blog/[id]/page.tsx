@@ -47,7 +47,7 @@ export default function Page({ params }: { params: { id: string } }) {
     const imgHeight = parseInt($(this).attr('height') || '500', 10);
 
     // Create a string representation of the Next.js Image component
-    const imageElement = `<Image key="${index}" src="/${imgSrc}" alt="${imgAlt}" width=${imgWidth} height=${imgHeight} />`;
+    const imageElement = `<Image key="${index}" src={imgSrc} alt="${imgAlt}" width=${imgWidth} height=${imgHeight} />`;
 
     // Replace the img tag with the string representation of the Next.js Image component
     $(this).replaceWith(imageElement);
