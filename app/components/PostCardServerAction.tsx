@@ -38,11 +38,10 @@ const PostCard: React.FC<IPostCard> = async ({ searchTerm }) => {
         const h1Content = $('h1').text();
         const pContent = $('p').first().text();
         const imgSrc = $('img').first().attr('src');
-        const img = `/${imgSrc}`;
 
         return (
           <div key={post._id} className="card w-96 glass m-2">
-           <figure><Image src={img || '/images/trolltunga.jpg'} width={390} height={250} alt="car!" /></figure>
+           <figure><Image src={imgSrc} width={390} height={250} alt="car!" /></figure>
             <div className="card-body">
               <h2 className="card-title">{h1Content}</h2>
               <p>{pContent}</p>
