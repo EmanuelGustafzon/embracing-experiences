@@ -70,7 +70,7 @@ export default function Page({ params }: { params: { id: string } }) {
     <div className='prose'>
       {content ? (
         <div>
-          <div dangerouslySetInnerHTML={{ __html: updatedContent }} />
+          <div className='m-2' dangerouslySetInnerHTML={{ __html: updatedContent }} />
           <h3 className="mt-5">Quiz Question:</h3>
           <div className="rounded-lg shadow-md p-4">
             <p>{question}</p>
@@ -84,9 +84,12 @@ export default function Page({ params }: { params: { id: string } }) {
           {map && (
             <div>
               <h3 className="mt-5">Find location here</h3>
-              <iframe src={map} width="600" height="450" loading="lazy"></iframe>
+              <iframe src={map} width="100%" height="auto" loading="lazy"></iframe>
             </div>
           )}
+          <div className='flex justify-center'>
+            <p>Thanks for reading</p>
+            </div>
         </div>
       ) : (
         <div className='grid grid-cols-2 gap-4 place-content-center h-48'>
