@@ -4,6 +4,8 @@
 ### Tech used
 TypeScript, Next.js, React, MongoDB, Mongoose, Firebase
 
+### Deployed site: https://www.embracing-experiences.com/blog
+
 ### Explore how the admin page looks like
 
 Text Editor
