@@ -53,20 +53,21 @@ const EditPosts: React.FC = () => {
                 Manage Blog Posts
             </h2>
         </div>
-        <div className="flex justify-center">
+        <div className='flex justify-center'>
+        <ul className=" rounded">
         {posts.length > 0 ? ( posts.map((post) => {
           const $ = cheerio.load(post.content);
           const h1Content = $('h1').text();
           return (
-            <div key={post._id} className="card w-96 bg-neutral text-neutral-content">
-              <div className="card-body items-center text-center">
-                <h2 className="card-title">{h1Content}</h2>
-                <div className="card-actions justify-end">
-                  <Link href={`/manage-content/edit-post/${post._id}`} className="btn btn-primary">Edit</Link>
-                  <button onClick={() => deletePost(post._id)} className="btn btn-danger">Delete</button>
+            <li key={post._id} className='bg-primary rounded m-5 p-3'>
+                <div className='flex flex-wrap' style={{ justifyContent: 'space-between' }}>
+                  <h2 className="card-title">{h1Content}</h2>
+                  <div>
+                    <Link href={`/manage-content/edit-post/${post._id}`} className="btn">Edit</Link>
+                    <button onClick={() => deletePost(post._id)} className="btn btn-error">Delete</button>
+                  </div>
                 </div>
-              </div>
-            </div>
+            </li>
           );
         })
         ) : (
@@ -74,6 +75,7 @@ const EditPosts: React.FC = () => {
         <span className="loading loading-ring loading-lg"></span>
         </div>     
         )}
+    </ul>
     </div>
     </div>
   )
